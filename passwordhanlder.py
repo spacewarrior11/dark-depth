@@ -20,7 +20,7 @@ def generateriddle(passwordpart, position):
     if riddleformat == 1:
         riddle = f"The {position}th place is the {passwordpieces.index(passwordpart) +1}th letter"
     if riddleformat == 2 or riddleformat == 3:
-        riddle = f"The {random.choice(piecessynonyms[passwordpieces.index(passwordpart)])} is the {random.choice(positionsynonyms[position - 1])} place"
+        riddle = f"The {random.choice(positionsynonyms[position - 1])} place is the {random.choice(piecessynonyms[passwordpieces.index(passwordpart)])}  "
     if riddleformat == 4:
         riddle = f"The {position}th place is the {random.choice(piecessynonyms[position - 1])}"
     
