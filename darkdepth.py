@@ -120,24 +120,24 @@ def generatedungeon():
     return dungeon, entities
 
 def dungeondressing(dungeon):
-    takenpos = []
+    takenpos = [[0 for j in range(64)] for i in range(30)]
     entities = []
     for i in range(random.randint(numrooms//3,numrooms//2)):
         dressing = copy.deepcopy(random.choice(features))
         x=random.randint(1, 61)
         y=random.randint(1, 23)
-        while dungeon[y][x] != "_" and not [x, y] in takenpos:
+        while dungeon[y][x] != "_" and takenpos[y][x] == 0:
             x=random.randint(1, 61)
             y=random.randint(1, 23)
-        takenpos.append([x, y])
+        takenpos[y][x] = 1
         entities.append({"character":dressing["character"], "name":dressing["name"], "x":x, "y":y})
     for i in range(4):
         x=random.randint(1, 61)
         y=random.randint(1, 23)
-        while dungeon[y][x] != "_" and not [x, y] in takenpos:
+        while dungeon[y][x] != "_" and takenpos[y][x] == 0:
             x=random.randint(1, 61)
             y=random.randint(1, 23)
-        takenpos.append([x, y])
+        takenpos[y][x] = 1
         entities.append({"character":"~", "name":"hint", "x":x, "y":y})
     
     return entities
